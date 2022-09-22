@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/interaktiver-film-final/static/js/main.06ce48f7.js",
+    "main.js": "/interaktiver-film-final/static/js/main.28b5951c.js",
     "index.html": "/interaktiver-film-final/index.html",
-    "main.06ce48f7.js.map": "/interaktiver-film-final/static/js/main.06ce48f7.js.map"
+    "main.28b5951c.js.map": "/interaktiver-film-final/static/js/main.28b5951c.js.map"
   },
   "entrypoints": [
-    "static/js/main.06ce48f7.js"
+    "static/js/main.28b5951c.js"
   ]
 }
