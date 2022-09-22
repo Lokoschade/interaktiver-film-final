@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/interaktiver-film-final/static/css/main.073c9b0a.css",
+    "main.js": "/interaktiver-film-final/static/js/main.d1e4e235.js",
+    "static/js/787.bf34452b.chunk.js": "/interaktiver-film-final/static/js/787.bf34452b.chunk.js",
+    "static/media/logo.svg": "/interaktiver-film-final/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/interaktiver-film-final/index.html",
+    "main.073c9b0a.css.map": "/interaktiver-film-final/static/css/main.073c9b0a.css.map",
+    "main.d1e4e235.js.map": "/interaktiver-film-final/static/js/main.d1e4e235.js.map",
+    "787.bf34452b.chunk.js.map": "/interaktiver-film-final/static/js/787.bf34452b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.d1e4e235.js"
+  ]
+}
