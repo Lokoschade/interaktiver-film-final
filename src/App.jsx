@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Route, Link, Routes } from "react-router-dom";
 import { About, Movies, Help } from './content';
+//test
  
 class App extends Component {
   render() {
