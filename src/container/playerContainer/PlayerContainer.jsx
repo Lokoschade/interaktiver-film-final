@@ -19,7 +19,7 @@ export default class PlayerContainer extends Component {
     }
     //wird sofort aufgerufen, nachdem Komponente gemounted wird
     componentDidMount() {
-        fetch("https://gruppe9.toni-barth.com/movies/" + this.props.movieId + "/1/")
+        fetch("https://gruppe7.toni-barth.com/movies/" + this.props.movieId + "/1/")
             .then((res) => res.json())
             .then((json) => {
                 this.setState({
@@ -31,7 +31,7 @@ export default class PlayerContainer extends Component {
     //überprüft ob im Parent der Prop movieId geupdated wurde, wenn ja wird der Player gererendert 
     componentDidUpdate(prevProps) {
         if (prevProps.movieId !== this.props.movieId) {
-            fetch("https://gruppe9.toni-barth.com/movies/" + this.props.movieId + "/1/")
+            fetch("https://gruppe7.toni-barth.com/movies/" + this.props.movieId + "/1/")
                 .then((res) => res.json())
                 .then((json) => {
                     this.setState({
@@ -63,7 +63,7 @@ export default class PlayerContainer extends Component {
 
     //wird aufgerufen, wenn einer der Fortsetzungsclips ausgewählt wurde
     loadNewClip = (number) => {
-        fetch("https://gruppe9.toni-barth.com/movies/" + this.props.movieId + "/" + number + "/")
+        fetch("https://gruppe7.toni-barth.com/movies/" + this.props.movieId + "/" + number + "/")
             .then((res) => res.json())
             .then((json) => {
                 this.setState({
