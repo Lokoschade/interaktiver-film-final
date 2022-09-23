@@ -1,0 +1,30 @@
+.wum__selection-heading {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+
+    margin-right: 5rem;
+}
+
+.wum__selection-heading h1 {
+    font-family: var(--font-family);
+    font-weight: 800;
+    font-size: 62px;
+    line-height: 75px;
+    letter-spacing: -0.04em;
+}
+
+@media screen and (max-width: 990px){
+    .wum__selection-heading {
+        margin: 0 0 2rem 0;
+    }
+}
+
+@media screen and (max-width: 550px){
+    .wum__selection-heading h1 {
+        font-size: 28px;
+        line-height: 38px;
+    }
+}

@@ -1,0 +1,25 @@
+.wum__help {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.wum__help-container {
+    flex: 1.5;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+@media screen and (max-width: 990px){
+    .wum__help {
+        flex-direction: column;
+    }
+
+    .wum__help-heading {
+        margin: 0 0 2rem 0;
+    }
+}

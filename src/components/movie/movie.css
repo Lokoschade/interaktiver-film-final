@@ -1,0 +1,41 @@
+.wum__selection-container_movie {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    background: var(--color-sections);
+    cursor: pointer;
+}
+
+.wum__selection-container_movie-image {
+    width: 100%;
+    height: 100%;
+    background: var(--color-sections);
+}
+
+.wum__selection-container_movie-image img {
+    width: 100%;
+    height: 100%;
+}
+.wum__selection-container_movie-title {
+    display: flex;
+    flex-direction: column;
+
+    padding: 1rem 1.5rem;
+}
+
+.wum__selection-container_movie-title h3 {
+    font-family: var(--font-family);
+    font-weight: 800;
+    font-size: 25.11px;
+    line-height: 30px;
+    color: var(--color-text);
+}
+
+@media screen and (max-width: 550px) {
+    .wum__selection-container_title h3 {
+        font-size: 18px;
+        line-height: 25px;
+    }
+}

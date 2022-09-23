@@ -1,0 +1,104 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--color-bg);
+}
+
+a {
+    color: unset;
+    text-decoration: none;
+}
+
+.gradient__bg {
+    /*background-color: #012622;
+    background: url('./assets/ticket-2974645.jpg') center center no-repat;*/
+    
+    /* ff 3.6+ */
+    background:-moz-radial-gradient(circle at 100% 100%, #FF242400 0%, #003B36 49%), url('./assets/ticket-2974645.jpg');
+
+    /* safari 5.1+,chrome 10+ */
+    background:-webkit-radial-gradient(circle at 100% 100%, #FF242400 0%, #003B36 49%), url('./assets/ticket-2974645.jpg');
+
+    /* opera 11.10+ */
+    background:-o-radial-gradient(circle at 100% 100%, #FF242400 0%, #003B36 49%), url('./assets/ticket-2974645.jpg');
+
+    /* ie 10+ */
+    background:-ms-radial-gradient(circle at 100% 100%, #FF242400 0%, #003B36 49%), url('./assets/ticket-2974645.jpg');
+
+    /* global 92%+ browsers support */
+    background:radial-gradient(circle at 100% 100%, #FF242400 0%, #003B36 49%), url('./assets/ticket-2974645.jpg');
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+}
+
+.gradient__text {
+    background: var(--gradient-color);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.section__padding {
+    padding: 4rem 6rem;
+}
+
+.section__margin {
+    margin: 4rem 6rem;
+}
+
+.scale-up-center {
+    -webkit-animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+@-webkit-keyframes scale-up-center {
+    0% {
+        -webkit-transform: scale(0.5);
+        transform: scale(0.5);
+    }
+
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+@keyframes scale-up-center {
+    0% {
+        -webkit-transform: scale(0.5);
+        transform: scale(0.5);
+    }
+
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .section__padding {
+        padding: 4rem;
+    }
+
+    .section__margin {
+        margin: 4rem;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .section__padding {
+        padding: 4rem 2rem;
+    }
+
+    .section__margin {
+        margin: 4rem 2rem;
+    }
+}
