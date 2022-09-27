@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
+import { Player } from '../../components'
 import './playerContainer.css'
-import ReactPlayer from 'react-player'
+
 
 export default class PlayerContainer extends Component {
 
@@ -14,12 +15,14 @@ export default class PlayerContainer extends Component {
             //ShowButtons wird erst 10 Sekunden vor Ende des Clips auf true gesetzt
             ShowButtons: false,
             //Wert zum vergleichen, ob die letzten 10 Sekunden des Clips erreicht wurden
-            LastTenSeconds: 0
+            LastTenSeconds: 0,
+            currentClip: 1
         }
     }
+
     //wird sofort aufgerufen, nachdem Komponente gemounted wird
     componentDidMount() {
-        fetch("https://gruppe7.toni-barth.com/movies/" + this.props.movieId + "/1/")
+        fetch("https://gruppe7.toni-barth.com/movies/" + this.props.movieId + "/" + this.props.clip + "/")
             .then((res) => res.json())
             .then((json) => {
                 this.setState({
@@ -30,8 +33,8 @@ export default class PlayerContainer extends Component {
     }
     //überprüft ob im Parent der Prop movieId geupdated wurde, wenn ja wird der Player gererendert 
     componentDidUpdate(prevProps) {
-        if (prevProps.movieId !== this.props.movieId) {
-            fetch("https://gruppe7.toni-barth.com/movies/" + this.props.movieId + "/1/")
+        if (prevProps.movieId !== this.props.movieId || prevProps.clip !== this.props.clip || prevProps.pos !== this.props.pos) {
+            fetch("https://gruppe7.toni-barth.com/movies/" + this.props.movieId + "/" + this.props.clip + "/")
                 .then((res) => res.json())
                 .then((json) => {
                     this.setState({
@@ -51,27 +54,18 @@ export default class PlayerContainer extends Component {
     }
 
     //wird vom Callbackprop onProgress vom ReactPlayer aufgerufen
-    handleShowButtons = ({ playedSeconds }) => {
+    handleProgress = ({ playedSeconds }) => {
         //wenn die abgespielten Sekunden >= der letzten zehn Sekunden ist und ShowButtons = false, dann ShowButtons = true
         if (playedSeconds >= this.state.LastTenSeconds && !this.state.ShowButtons) {
             this.setState({ ShowButtons: true }, () => {
                 //console.log(this.state.ShowButtons)
             })
-
         }
-    }
-
-    //wird aufgerufen, wenn einer der Fortsetzungsclips ausgewählt wurde
-    loadNewClip = (number) => {
-        fetch("https://gruppe7.toni-barth.com/movies/" + this.props.movieId + "/" + number + "/")
-            .then((res) => res.json())
-            .then((json) => {
-                this.setState({
-                    movies: json,
-                    DataisLoaded: true
-                });
-            })
-        this.setState({ ShowButtons: false })
+        fetch("https://gruppe7.toni-barth.com/users/" + this.props.username + "/" + this.props.movieId + "/", {
+            method: 'PUT',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ "clip": this.state.currentClip, "time": playedSeconds })
+        })
     }
 
     render() {
@@ -81,22 +75,11 @@ export default class PlayerContainer extends Component {
             <div className='wum__playercontainer section__padding' id='player' >
                 {!DataisLoaded
                     ? <h1>Bitte warte kurz...</h1>
-                    : <ReactPlayer
-                        className='react-player'
-                        url={movies.link}
-                        width='100%'
-                        height='100%'
-                        controls={true}
-                        /* gibt die Länge des aktuell geladenen Clips weiter */
-                        onDuration={this.handleDuration}
-                        /* gibt in diesem Fall die abgespielten Sekunden weiter */
-                        onProgress={this.handleShowButtons}
-                    />}
-
+                    : <Player movies={movies} time={this.props.pos} onDuration={this.handleDuration} onProgress={this.handleProgress}/>}
                 {this.state.ShowButtons && options.length > 0
                     ? <div className='wum__playercontainer-button'>
                         {/* je nachdem wie viele Wahlmöglichkeiten es gibt werden, die richtige Anzahl an Buttons gerendert */}
-                        {options.map((number, i) => <h3 key={i} onClick={() => this.loadNewClip(number)}>Clip {number}</h3>)}
+                        {options.map((number, i) => <h3 key={i} onClick={() => this.componentDidUpdate}>Clip {number}</h3>)}
                     </div>
                     : null}
             </div>

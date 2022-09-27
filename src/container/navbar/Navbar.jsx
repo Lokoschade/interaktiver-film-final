@@ -24,9 +24,8 @@ const Navbar = () => {
                     <Menu />
                 </div>
             </div>
-            <div className='wum__navbar-right'>
+            <div className='wum__navbar-help'>
                 <p><NavLink to='/interaktiver-film-final/help'>Help</NavLink></p>
-                <p><NavLink to='/interaktiver-film-final/login'>Login</NavLink></p>
             </div>
             <div className='wum__navbar-menu'>
                 {toggleMenu
@@ -38,9 +37,8 @@ const Navbar = () => {
                         <div className='wum__navbar-menu_container-links'>
                             <Menu />
                         </div>
-                        <div className='wum__navbar-menu_container-links-right'>
+                        <div className='wum__navbar-menu_container-links-help'>
                             <p><NavLink to='/interaktiver-film-final/help'>Help</NavLink></p>
-                            <p><NavLink to='/interaktiver-film-final/login'>Login</NavLink></p>
                         </div>
                     </div>
                 )}
