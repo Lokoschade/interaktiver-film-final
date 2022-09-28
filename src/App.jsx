@@ -19,21 +19,17 @@ class App extends Component {
 
   //bekommt von Selection einen Wert und löst den erten Render vom Player aus
   handleCallback = (num, clip, pos) => {
-    this.setState({ movieId: num, clip: clip, pos: pos, renderPlayer: true }, () => {
-      console.log('MovieID ' + this.state.movieId)
-    })
+    this.setState({ movieId: num, clip: clip, pos: pos, renderPlayer: true }, () => {})
   }
 
   handleUsername = (name) => {
-    this.setState({ username: name, hasName: true }, () => {
-      console.log('User ' + this.state.username)
-    })
+    this.setState({ username: name, hasName: true }, () => {})
   }
 
   render() {
     const { movieId, pos, clip } = this.state;
-    var player = this.state.renderPlayer ? <PlayerContainer movieId={movieId} clip={clip} pos={pos} username={this.state.username} /> : null
-    var user = this.state.hasName ? <><Selection handleClick={this.handleCallback} username={this.state.username}/> {player}</> : <Username setUser={this.handleUsername}/>
+    var player = this.state.renderPlayer ? <PlayerContainer handleClick={this.handleCallback} movieId={movieId} clip={clip} pos={pos} username={this.state.username} /> : null
+    var user = this.state.hasName ? <><Selection handleClick={this.handleCallback} username={this.state.username} time={pos}/> {player}</> : <Username setUser={this.handleUsername}/>
     return (
         <div className="App">
           <div className="gradient__bg">

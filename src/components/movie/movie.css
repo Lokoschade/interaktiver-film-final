@@ -5,7 +5,7 @@
     height: 100%;
 }
 
-.changeColor {
+.playChange, .replayChange {
     color: var(--color-text);
     cursor: pointer;
     height: 50px;
@@ -14,7 +14,7 @@
     margin: 0 1rem 0 1rem;
 }
 
-.changeColor:hover {
+.playChange:hover, .replayChange:hover {
     color: var(--color-subtext);
 }
 

@@ -16,7 +16,8 @@ export default class PlayerContainer extends Component {
             ShowButtons: false,
             //Wert zum vergleichen, ob die letzten 10 Sekunden des Clips erreicht wurden
             LastTenSeconds: 0,
-            currentClip: 1
+            currentClip: 1,
+            key: 'base'
         }
     }
 
@@ -24,9 +25,9 @@ export default class PlayerContainer extends Component {
     componentDidMount() {
         fetch("https://gruppe7.toni-barth.com/movies/" + this.props.movieId + "/" + this.props.clip + "/")
             .then((res) => res.json())
-            .then((json) => {
+            .then((data) => {
                 this.setState({
-                    movies: json,
+                    movies: data,
                     DataisLoaded: true
                 });
             })
@@ -34,14 +35,7 @@ export default class PlayerContainer extends Component {
     //überprüft ob im Parent der Prop movieId geupdated wurde, wenn ja wird der Player gererendert 
     componentDidUpdate(prevProps) {
         if (prevProps.movieId !== this.props.movieId || prevProps.clip !== this.props.clip || prevProps.pos !== this.props.pos) {
-            fetch("https://gruppe7.toni-barth.com/movies/" + this.props.movieId + "/" + this.props.clip + "/")
-                .then((res) => res.json())
-                .then((json) => {
-                    this.setState({
-                        movies: json,
-                        ShowButtons: false
-                    });
-                })
+            this.remountPlayer(this.props.clip, this.props.pos);
         }
     }
     //wird vom Callbackprop onDuration vom ReactPlayer aufgerufen
@@ -68,18 +62,37 @@ export default class PlayerContainer extends Component {
         })
     }
 
+    remountPlayer = (number, pos) => {
+        this.setState({
+            DataisLoaded: false,
+            key: (Math.random().toString()),
+            ShowButtons: false
+        }, () => {})
+
+        this.props.handleClick(this.props.movieId, number, pos)
+        fetch("https://gruppe7.toni-barth.com/movies/" + this.props.movieId + "/" + number + "/")
+            .then((res) => res.json())
+            .then((data) => {
+                this.setState({
+                    movies: data,
+                    DataisLoaded: true,
+                    currentClip: number
+                });
+            })
+    }
+
     render() {
-        const { DataisLoaded, movies } = this.state;
+        const { DataisLoaded, movies, key } = this.state;
         const options = movies.options;
         return (
             <div className='wum__playercontainer section__padding' id='player' >
                 {!DataisLoaded
                     ? <h1>Bitte warte kurz...</h1>
-                    : <Player movies={movies} time={this.props.pos} onDuration={this.handleDuration} onProgress={this.handleProgress}/>}
+                    : <Player key={key} movies={movies} time={this.props.pos} onDuration={this.handleDuration} onProgress={this.handleProgress} />}
                 {this.state.ShowButtons && options.length > 0
                     ? <div className='wum__playercontainer-button'>
                         {/* je nachdem wie viele Wahlmöglichkeiten es gibt werden, die richtige Anzahl an Buttons gerendert */}
-                        {options.map((number, i) => <h3 key={i} onClick={() => this.componentDidUpdate}>Clip {number}</h3>)}
+                        {options.map((number, i) => <h3 key={i} onClick={() => this.remountPlayer(number, 0)}>Clip {number}</h3>)}
                     </div>
                     : null}
             </div>

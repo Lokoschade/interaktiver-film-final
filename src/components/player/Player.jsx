@@ -11,7 +11,7 @@ export default function Player({ movies, time, onDuration, onProgress }) {
             playerRef.current.seekTo(time, "seconds");
             setIsReady(true);
         }
-    }, [isReady]);
+    }, [isReady, time]);
 
     return (
         <div>

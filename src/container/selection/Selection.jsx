@@ -7,7 +7,8 @@ export default class Selection extends Component {
     super(props);
     this.state = {
       movies: [],
-      pos: []
+      rightPos: [],
+      rightClip: []
     }
   }
 
@@ -17,20 +18,42 @@ export default class Selection extends Component {
       fetch("https://gruppe7.toni-barth.com/users/" + this.props.username + "/movies/")
     ])
       .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
-      .then(([data1, data2]) => this.setState({
-        movies: data1.movies,
-        pos: data2.movies
-      }, () => {
-      }
-      ));
+      .then(([data1, data2]) => {
+        const tempPos = Array(data1.movies.length).fill(0);
+        const tempClip = Array(data1.movies.length).fill(0);
+        data2.movies.forEach((element, i) => {
+          if (element.id - 1 === i) {
+            tempPos[i] = element.position.time
+            tempClip[i] = element.position.clip
+          }
+        });
+        this.setState({
+          movies: data1.movies,
+          rightPos: tempPos,
+          rightClip: tempClip
+        })
+      })
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.time !== this.props.time) {
+      fetch("https://gruppe7.toni-barth.com/users/" + this.props.username + "/movies/")
+        .then((res) => res.json())
+        .then((data) => {
+          const tempPos = Array(data.movies.length).fill(0);
+          data.movies.forEach((element, i) => {
+            if (element.id - 1 === i) {
+              tempPos[i] = element.position.time
+            }
+          });
+          this.setState({
+            rightPos: tempPos
+          });
+        })
+    }
   }
   render() {
-    const rightPos = Array(this.state.movies.length).fill(0);
-    const rightClip = Array(this.state.movies.length).fill(0);
-    this.state.pos.forEach((element, i) => {if(element.id -1 === i){
-      rightPos[i] = element.position.time
-      rightClip[i] = element.position.clip
-    }})
+    const { rightClip, rightPos, movies } = this.state;
     return (
       <div className='wum__selection section__padding'>
         <div className='wum__selection-container'>
@@ -38,10 +61,10 @@ export default class Selection extends Component {
 
               customClickEvent ist notwendig, weil je nach geklicktem Film soll eine andere Id weiter gegeben werden, aber da man onClick-Events nur in der Component selber behandelt kann,
               gebe ich von App die Funktion handleClick an Selection weiter, um dann per customClickEvent die movieId von App jeweils an die passende Movie-Component weiterzuleiten*/}
-          {this.state.movies && this.state.movies.map((movie) =>
-          <Movie key={movie.id} title={movie.name} time={rightPos[movie.id-1]} clip={rightClip[movie.id-1]} 
-          loadClip={() => this.props.handleClick(movie.id, rightClip[movie.id-1], rightPos[movie.id-1])} />)}
-      
+          {movies && movies.map((movie) =>
+            <Movie key={movie.id} movieId={movie.id} title={movie.name} time={rightPos[movie.id - 1]} clip={rightClip[movie.id - 1]}
+              loadClip={(movieId, clip, time) => this.props.handleClick(movieId, clip, time)} />)}
+
         </div>
       </div>
     )
