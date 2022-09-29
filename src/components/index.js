@@ -1,9 +1,11 @@
 export { default as About } from './about/About';
+export { default as Admin } from './admin/Admin';
 export { default as Break } from './break/Break';
 export { default as Footer } from './footer/Footer';
 export { default as Help } from './help/Help';
 export { default as HelpHeading } from './help/heading/HelpHeading';
 export { default as Movie } from './movie/Movie';
+export { default as MovieInfo } from './movieInfo/MovieInfo';
 export { default as Player } from './player/Player';
 export { default as Question } from './question/Question';
 export { default as ResponsivePlayer } from './responsivePlayer/ResponsivePlayer';

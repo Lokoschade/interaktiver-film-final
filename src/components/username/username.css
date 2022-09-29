@@ -1,0 +1,11 @@
+.wum__username form{
+    display: flex;
+    gap: 1rem;
+}
+
+.wum__username label {
+    display: flex;
+    gap: 1rem;
+    font-family: var(--font-family);
+    color: var(--color-text);
+}

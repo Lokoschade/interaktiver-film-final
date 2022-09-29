@@ -1,0 +1,15 @@
+.wum__admin-userInfo {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.wum__admin-userInfo p {
+    font-family: var(--font-family);
+    color: var(--color-text);
+}
+.wum__admin-userInfo_movie {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
