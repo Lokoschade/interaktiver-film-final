@@ -48,7 +48,7 @@ export default class Selection extends Component {
           });
           this.setState({
             rightPos: tempPos
-          });
+          }, () => { console.log('time changed')});
         })
     }
   }

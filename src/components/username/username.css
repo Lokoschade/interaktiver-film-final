@@ -1,11 +1,29 @@
-.wum__username form{
+.wum__username form {
     display: flex;
     gap: 1rem;
+    align-items: center;
 }
-
-.wum__username label {
+.wum__username p {
     display: flex;
     gap: 1rem;
     font-family: var(--font-family);
     color: var(--color-text);
+}
+
+.wum__username input {
+    font-family: var(--font-family);
+    border-radius: 3px;
+}
+
+.wum__username input#button {
+    background-color: var(--color-subtext);
+    color: var(--color-text);
+    border: none;
+    padding: 0.2rem 1rem;
+}
+
+@media screen and (max-width: 700px) {
+    .wum__username form {
+        flex-direction: column;
+    }
 }

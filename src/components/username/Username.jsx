@@ -12,15 +12,14 @@ const Username = ({ setUser }) => {
     return (
         <div className='wum__username section__padding'>
             <form onSubmit={handleSubmit}>
-                <label> What's your username:
-                    <input
+                <p> What's your username:</p>
+                <input
                         type='text'
                         value={username}
                         required
                         onChange={(e) => setUsername(e.target.value)}
                     />
-                </label>
-                <input type='submit' value='Submit'/>
+                <input id='button' type='submit' value='Submit'/>
             </form>
         </div>
     )

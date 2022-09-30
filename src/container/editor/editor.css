@@ -1,12 +1,43 @@
 .wum__editor {
     display: flex;
-    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+.wum__editor-buttons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+.wum__editor form {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.wum__editor p {
+    display: flex;
     gap: 1rem;
     font-family: var(--font-family);
     color: var(--color-text);
 }
 
-.wum__editor label {
-    display: flex;
-    gap: 1rem;
+.wum__editor input {
+    font-family: var(--font-family);
+    border-radius: 3px;
+}
+
+.wum__editor input#button, button {
+    font-family: var(--font-family);
+    background-color: var(--color-subtext);
+    border-radius: 3px;
+    color: var(--color-text);
+    border: none;
+    padding: 0.2rem 1rem;
+}
+
+@media screen and (max-width: 700px) {
+    .wum__editor {
+        flex-direction: column;
+    }
 }

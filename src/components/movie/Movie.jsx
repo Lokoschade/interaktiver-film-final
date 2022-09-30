@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { RiPlayFill } from 'react-icons/ri';
 import { MdReplayCircleFilled } from 'react-icons/md';
 import './movie.css'
 
 const Movie = ({ movieId, title, loadClip, time, clip }) => {
+
+  useEffect(() => {
+  },[time, clip])
   
   return (
     <div>

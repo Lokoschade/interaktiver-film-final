@@ -43,6 +43,11 @@
     color: var(--color-text);
 }
 
+.wum__selection-container_movie-progress {
+    font-family: var(--font-family);
+    color: var(--color-text);
+}
+
 @media screen and (max-width: 550px) {
     .wum__selection-container_title h3 {
         font-size: 18px;
