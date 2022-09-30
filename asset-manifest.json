@@ -1,19 +1,18 @@
 {
   "files": {
-    "main.css": "/interaktiver-film-final/static/css/main.80b75d3f.css",
-    "main.js": "/interaktiver-film-final/static/js/main.6f9ca5f2.js",
+    "main.css": "/interaktiver-film-final/static/css/main.37c5cd2b.css",
+    "main.js": "/interaktiver-film-final/static/js/main.23cf3b8e.js",
     "static/media/ticket-2974645.jpg": "/interaktiver-film-final/static/media/ticket-2974645.ec719b27511ed1a1cf44.jpg",
     "static/media/js_mastery.png": "/interaktiver-film-final/static/media/js_mastery.271574106b64a3379b64.png",
     "static/media/hsa_logo_white.png": "/interaktiver-film-final/static/media/hsa_logo_white.72e00f70fa3e62153f22.png",
-    "static/media/thumbnail.jpg": "/interaktiver-film-final/static/media/thumbnail.54a95532e7ec38f8c42d.jpg",
     "static/media/logoipsum-logo.svg": "/interaktiver-film-final/static/media/logoipsum-logo.aed27d010960115b8f99b5faa6e2ff82.svg",
     "static/media/logo.svg": "/interaktiver-film-final/static/media/logo.e4807b9d5b63d0fe60770cb867657ac1.svg",
     "index.html": "/interaktiver-film-final/index.html",
-    "main.80b75d3f.css.map": "/interaktiver-film-final/static/css/main.80b75d3f.css.map",
-    "main.6f9ca5f2.js.map": "/interaktiver-film-final/static/js/main.6f9ca5f2.js.map"
+    "main.37c5cd2b.css.map": "/interaktiver-film-final/static/css/main.37c5cd2b.css.map",
+    "main.23cf3b8e.js.map": "/interaktiver-film-final/static/js/main.23cf3b8e.js.map"
   },
   "entrypoints": [
-    "static/css/main.80b75d3f.css",
-    "static/js/main.6f9ca5f2.js"
+    "static/css/main.37c5cd2b.css",
+    "static/js/main.23cf3b8e.js"
   ]
 }
