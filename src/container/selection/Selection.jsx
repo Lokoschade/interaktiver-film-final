@@ -12,6 +12,7 @@ export default class Selection extends Component {
     }
   }
 
+  //fetched die vorhandenen Movies und den Fortschritt vom jeweilig eingeloggten User
   componentDidMount() {
     Promise.all([
       fetch("https://gruppe7.toni-barth.com/movies/"),
@@ -35,6 +36,7 @@ export default class Selection extends Component {
       })
   }
 
+  //wenn sich die Zeit geupdated hat, soll sich auch der state in Selection updaten
   componentDidUpdate(prevProps) {
     if (prevProps.time !== this.props.time) {
       fetch("https://gruppe7.toni-barth.com/users/" + this.props.username + "/movies/")
@@ -48,7 +50,7 @@ export default class Selection extends Component {
           });
           this.setState({
             rightPos: tempPos
-          }, () => { console.log('time changed')});
+          }, () => { });
         })
     }
   }
@@ -58,10 +60,7 @@ export default class Selection extends Component {
     return (
       <div className='wum__selection section__padding'>
         <div className='wum__selection-container'>
-          {/* rendere so viele Movie Componenten, wie es Elemente im gefetchten movies-Array gibt
-
-              customClickEvent ist notwendig, weil je nach geklicktem Film soll eine andere Id weiter gegeben werden, aber da man onClick-Events nur in der Component selber behandelt kann,
-              gebe ich von App die Funktion handleClick an Selection weiter, um dann per customClickEvent die movieId von App jeweils an die passende Movie-Component weiterzuleiten*/}
+          {/* rendere so viele Movie Componenten, wie es Elemente im gefetchten movies-Array gibt*/}
           {movies && movies.map((movie) =>
             <Movie key={movie.id} movieId={movie.id} title={movie.name} time={rightPos[movie.id - 1]} clip={rightClip[movie.id - 1]}
               loadClip={(movieId, clip, time) => this.props.handleClick(movieId, clip, time)} />)}

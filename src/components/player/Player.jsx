@@ -6,6 +6,7 @@ export default function Player({ movies, time, onDuration, onProgress }) {
     const [isReady, setIsReady] = useState(false);
     const playerRef = useRef();
 
+    //spult im Player zur gewünschten Stelle beim Start
     const onReady = useCallback(() => {
         if (!isReady) {
             playerRef.current.seekTo(time, "seconds");

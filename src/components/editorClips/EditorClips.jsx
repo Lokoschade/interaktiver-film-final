@@ -6,19 +6,22 @@ export default function EditorClips({ oldOption, clips, setShowChoices, removeCl
     const [allOptions, setAllOptions] = useState([1, 1])
     const [remove, setRemove] = useState(false)
 
+    //zählt den Zähler für die Optionen hoch und erweitert das Array um die Optionen zu speichern
     const handleClick = () => {
         setOptions(options + 1);
         setAllOptions(current => [...current, 1]);
     }
 
+    //speichert die ausgewählten Optionen
     const handleAllOptions = (index, e) => {
         const newOptions = Array.from(allOptions);
         newOptions[index] = parseInt(e.target.value);
         setAllOptions(newOptions);
     }
 
+    //handled den jeweiligen Submit vom EditorClips-Element
     const handleSubmit = () => {
-        var endMovies = allOptions.map((option) => '{"id":' + parseInt(option) + ',"link":"https://gitlab.hs-anhalt.de/barth_to/interactive-clip/-/raw/master/movies/clip' + option + '.webm","options":[]}')
+        var endMovies = allOptions.map((option) => '{"id":' + option + ',"link":"https://gitlab.hs-anhalt.de/barth_to/interactive-clip/-/raw/master/movies/clip' + option + '.webm","options":[]}')
         addString(',{"id":' + (oldOption) + ',"link":"https://gitlab.hs-anhalt.de/barth_to/interactive-clip/-/raw/master/movies/clip' + oldOption + '.webm","options":[' + allOptions.toString() + ']},' + endMovies.toString())
         setShowChoices(current => [...current, "Clip " + oldOption + " Options: [ " + allOptions.toString() + " ]"]);
         removeClips(allOptions);

@@ -2,6 +2,7 @@ import React from 'react'
 import './footer.css'
 import logo from "../../assets/logo.svg"
 
+//componente nur zum hübsch aussehen
 const Footer = () => {
   return (
     <div className="wum__footer section__padding">

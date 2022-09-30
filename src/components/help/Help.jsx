@@ -6,7 +6,7 @@ import { Question } from '../../components'
 const helpFAQ = [
   {
     question: 'How do I select a movie?',
-    answer: 'First you go to our movie selection section. There you only need to click on whichever movie you want to watch. After that a video player pops up above that and you can watch it.'
+    answer: 'First you go to our movie selection section. There you can choose to continue watching on the play button or start from the beginning by clicking on the circle arrow. After that a video player pops up below that and you can watch it.'
   },
   {
     question: "My movie was only 30 seconds long and didn't have any concusion!",

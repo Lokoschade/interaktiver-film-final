@@ -4,6 +4,7 @@ import './navbar.css';
 import logo from '../../assets/logo.svg';
 import { NavLink } from 'react-router-dom';
 
+//Componente um die Links jeweils in der mobilen und Desktopansicht einzufügen
 const Menu = () => (
     <>
         <p><NavLink to='/interaktiver-film-final/'>About</NavLink></p>

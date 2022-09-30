@@ -12,6 +12,7 @@ export default class Admin extends Component {
         };
     }
 
+    //beim mounten alle user abfragen und dann jeweils an fetchMovies weiterleiten
     componentDidMount() {
         fetch("https://gruppe7.toni-barth.com/users/")
             .then((res) => res.json())
@@ -23,6 +24,7 @@ export default class Admin extends Component {
             })
     }
 
+    //fetchaufruf für die Filmfortschritte vom jeweiligen user, welche in einem Object gespeichert werden
     fetchMovies = (user) => {
         fetch("https://gruppe7.toni-barth.com/users/" + user + "/movies/")
             .then((res) => res.json())
@@ -35,6 +37,7 @@ export default class Admin extends Component {
             })
     }
 
+    //Gefetchte Daten werden eingefügt und gerendert
     render() {
         const { users, movies} = this.state;
         return (

@@ -8,6 +8,7 @@ const Movie = ({ movieId, title, loadClip, time, clip }) => {
   useEffect(() => {
   },[time, clip])
   
+  //fügt die daten von Selection ein und gibt beim klick auf einen der Buttons an Selection und von da aus an App die jeweiligen Clip und Zeit Daten zurück
   return (
     <div>
       <div className='wum__selection-container_movie'>

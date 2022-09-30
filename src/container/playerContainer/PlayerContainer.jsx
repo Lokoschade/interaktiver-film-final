@@ -62,6 +62,7 @@ export default class PlayerContainer extends Component {
         })
     }
 
+    //verändert den key vom Player um einen rerender auszulösen
     remountPlayer = (number, pos) => {
         this.setState({
             DataisLoaded: false,

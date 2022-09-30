@@ -2,6 +2,7 @@ import React from 'react'
 import './about.css'
 
 const Header = () => {
+  //Komponente hauptsächlich dazu da um da zu sein
   return (
     <div className='wum__header section__padding'>
       <div className='wum__header-content'>

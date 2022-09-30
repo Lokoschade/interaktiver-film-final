@@ -11,39 +11,46 @@ export default function Editor() {
   const [showOtherInput, setShowOtherIput] = useState(false)
   const [dataString, setDataString] = useState('{')
   const [showChoices, setShowChoices] = useState([])
-  const [counter, setConter] = useState(0)
+  const [counter, setCounter] = useState(0)
+  //Variable um einen Key zu speichern bzw. ändern zu können um nach dem zurücksetzen der States neuzurendern
   const [uniqueId, setUniqueId] = useState('base')
+
+  //setzt den Namen vom Film
   const handleNameSet = (e) => {
     e.preventDefault();
     setMovieName(movieName);
     setNameSet(true);
     setDataString(dataString + '"name":"' + movieName + '","clips":[{');
   }
-
+  //zählt den Zähler für die Optionen hoch und erweitert das Array um die Optionen zu speichern
   const handleClick = () => {
     setOptions(options + 1);
     setAllOptions(current => [...current, 1]);
   }
 
+  //speichert die ausgewählten Optionen
   const handleAllOptions = (index, e) => {
     const newOptions = Array.from(allOptions);
     newOptions[index] = parseInt(e.target.value);
     setAllOptions(newOptions);
   }
 
+  //entfernt die Optionen aus der Auswahl
   const removeClips = (theOptions) => {
     setClips(current => current.filter(option => !theOptions.includes(option)))
   }
 
+  //setzt den String für den POST zusammen
   const addString = (string) => {
     if (counter < allOptions.length - 1){
     setDataString(current => current + string)
     } else {
       setDataString(current => current + string + ']}')
     }
-    setConter(current => current+1)
+    setCounter(current => current+1)
   }
 
+  //Postet den Film und setzt alle states zurück
   const postMovie = () => {
     fetch("https://gruppe7.toni-barth.com/movies/", {
       method: 'POST',
@@ -58,10 +65,11 @@ export default function Editor() {
     setShowOtherIput(false)
     setDataString('{')
     setShowChoices([])
-    setConter(0)
+    setCounter(0)
     setUniqueId(Math.random().toString())
   }
 
+  //handled den ersten Submit
   const handleSubmit = () => {
     removeClips(allOptions);
     setDataString(dataString + '"id":1,"link":"https://gitlab.hs-anhalt.de/barth_to/interactive-clip/-/raw/master/movies/clip1.webm","options":[' + allOptions.toString() + ']}');
@@ -69,12 +77,15 @@ export default function Editor() {
     setShowOtherIput(true);
   }
 
+  //hört auf die Änderung von clips, damit die Auswahl angepasst wird
   useEffect(() => {
   }, [clips])
 
   return (
     <div key={uniqueId} className='wum__editor section__padding'>
       <div>{showChoices.map((text, i) => <p key={i}>{text}</p>)}</div>
+
+      {/* Wird  solange angezeigt bis der Name gesetzt ist */}
       {!nameSet
         ? <form onSubmit={(e) => handleNameSet(e)}>
           <p>What's the name of your movie?</p>
@@ -87,6 +98,7 @@ export default function Editor() {
           <input id='button' type='submit' value='Submit' />
         </form>
         : <>
+        {/* Wird solange angezeigt, bis der Clip mit der Auswahl eingefügt wurde */}
           {!showOtherInput
             ? <>
               <p>Clip 1 Options:

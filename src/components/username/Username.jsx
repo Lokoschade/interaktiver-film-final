@@ -4,6 +4,7 @@ import './username.css'
 const Username = ({ setUser }) => {
     const [username, setUsername] = useState('');
 
+    //setzt den Usernamen
     const handleSubmit = (event) => {
         event.preventDefault();
         setUser(username);

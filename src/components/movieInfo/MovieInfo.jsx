@@ -2,6 +2,7 @@ import React from 'react'
 import './movieInfo.css'
 
 export default function MovieInfo({ movies, id, user }) {
+    //Daten von Admin werden eingefügt
     return (
         <div className='wum__admin-userInfo'>
             <div className='wum__admin-userInfo_user'>
