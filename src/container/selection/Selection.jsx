@@ -52,6 +52,7 @@ export default class Selection extends Component {
         })
     }
   }
+  
   render() {
     const { rightClip, rightPos, movies } = this.state;
     return (

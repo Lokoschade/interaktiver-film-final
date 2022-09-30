@@ -1,6 +1,7 @@
 export { default as About } from './about/About';
 export { default as Admin } from './admin/Admin';
 export { default as Break } from './break/Break';
+export { default as EditorClips } from './editorClips/EditorClips';
 export { default as Footer } from './footer/Footer';
 export { default as Help } from './help/Help';
 export { default as HelpHeading } from './help/heading/HelpHeading';

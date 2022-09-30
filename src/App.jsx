@@ -18,7 +18,7 @@ class App extends Component {
     }
   }
 
-  //bekommt von Selection einen Wert und löst den erten Render vom Player aus
+  //bekommt von Selection einen Wert und löst den ersten Render vom Player aus
   handleCallback = (num, clip, pos) => {
     this.setState({ movieId: num, clip: clip, pos: pos, renderPlayer: true }, () => { })
   }
